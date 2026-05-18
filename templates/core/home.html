@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+{% block container_class %}wide{% endblock %}
+
+{% block content %}
+<h1>Home</h1>
+<p>Sesion iniciada. Panel base listo.</p>
+<p><strong>Usuario:</strong> {{ request.user.username }}</p>
+<div class="links">
+    {% if request.user.is_staff %}
+        <a class="btn btn-secondary" href="/admin/">Ir a admin Django</a>
+    {% endif %}
+    <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button class="btn" type="submit">Cerrar sesion</button>
+    </form>
+</div>
+{% endblock %}

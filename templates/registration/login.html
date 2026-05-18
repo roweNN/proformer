@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Ingresar{% endblock %}
+
+{% block content %}
+<h1>Ingresar</h1>
+<p>Accede al panel base del proyecto.</p>
+<form method="post">
+    {% csrf_token %}
+    <div class="form-row">{{ form.username.label_tag }}{{ form.username }}</div>
+    <div class="form-row">{{ form.password.label_tag }}{{ form.password }}</div>
+    {% if form.errors %}<div class="errorlist">Credenciales invalidas.</div>{% endif %}
+    <button class="btn" type="submit">Entrar</button>
+</form>
+<div class="links">
+    <a href="{% url 'register' %}">Crear cuenta</a>
+    <a href="{% url 'password_reset' %}">Recuperar cuenta</a>
+</div>
+{% endblock %}

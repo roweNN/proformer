@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Panel{% endblock %}</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f6fb;
+            color: #1e293b;
+        }
+        .container {
+            max-width: 480px;
+            margin: 4rem auto;
+            padding: 2rem;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+        }
+        .wide {
+            max-width: 760px;
+        }
+        h1, h2 {
+            margin-top: 0;
+        }
+        .form-row {
+            margin-bottom: 1rem;
+        }
+        .form-control {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            box-sizing: border-box;
+        }
+        .btn {
+            display: inline-block;
+            padding: 0.9rem 1.25rem;
+            background: #0f172a;
+            color: #ffffff;
+            text-decoration: none;
+            border: 0;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .btn-secondary {
+            background: #475569;
+        }
+        .links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+        .messages {
+            list-style: none;
+            padding: 0;
+        }
+        .messages li {
+            margin-bottom: 1rem;
+            padding: 0.85rem 1rem;
+            background: #dcfce7;
+            border-radius: 10px;
+        }
+        .errorlist {
+            color: #b91c1c;
+        }
+    </style>
+</head>
+<body>
+    <main class="container {% block container_class %}{% endblock %}">
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>
